@@ -1,0 +1,10 @@
+<h1>WELCOME TO THE MOVIE SHOW</h1>
+<h2>HERE YOU CAN FIND ALL OF YOUR MOVIES LISTS, for more info click on the button underneath each one...</h2>
+<%= link_to "ADD NEW LIST  ?????", new_list_path, class: "btn btn-outline-primary" %>
+<% @lists.each do |list| %>
+<div>
+  <h2><%= list.name %> </h2>
+  <%= link_to "MICHELLE OBAMA AHAHAHAHAH", list_path(list.id) %>
+</div>
+<% end %>
+

@@ -1,0 +1,25 @@
+<div class="banner"  >
+  <h1><%= @list.name %></h1>
+</div>
+
+
+<%= simple_form_for([@list, @bookmark]) do |f| %>
+<h3>???? DO YOU WANT TO ADD A NEW MOVIE ?????</h3>
+  <div class="form-inputs">
+    <%= f.input :movie_id, collection: Movie.all, label: "Select Movie" %> 
+     <%= f.input :comment %>  
+  </div>
+  <%= f.button :submit, class: "btn btn-outline-primary w-100" %> 
+<% end %>
+
+<%= link_to "BACK TO THE LISTS LIST", lists_path, class: "btn btn-outline-primary m-4" %>
+
+<% @bookmarks.reverse.each do |bookmark| %>
+    <% movie = Movie.find(bookmark.movie_id) %>
+  <div class="card">
+    <img src="<%= movie.poster_url %>" alt="<%= movie.title %>">
+    <h2><%= "#{movie.title} • #{movie.rating}⭐" %></h2>
+    <p><%= movie.overview %></p>
+    <p><%= bookmark.comment %></p>
+  </div>
+<% end %>
